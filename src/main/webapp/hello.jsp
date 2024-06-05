@@ -1,14 +1,8 @@
-
-
-<%@ page language="java" 
-		contentType="text/html; charset=UTF-8"
-    	pageEncoding="UTF-8"%>
-    	
-    	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
-	<head>
+<head>
 		<meta charset="UTF-8">
 		<title>Hello JSP World</title>
 	</head>
@@ -26,5 +20,5 @@
 		<p>안녕하세요, <%= name %>님</p>
 		<p>이것은 JSP로 만들어진 동적 페이지입니다.</p>
 	</body>
+	
 </html>
-
