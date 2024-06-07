@@ -10,7 +10,7 @@
 	</head>
 	
 	<body>
-		<!-- 사용자로부터 name 을 받아서 환영메세지 출력 -->
+		<!-- 사용자로부터 name 을 받아서 환영메세지 출력/ -->
 		<%
 		String name = request.getParameter("name");
 		if (name == null) { 	//사용자가 전달한 매개변수 name이 없으면
