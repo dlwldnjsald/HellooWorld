@@ -40,7 +40,7 @@ public class LoggingFilter implements Filter {
 		logger.info("들어오는 요청의 URI:" + httpRequest.getRequestURI());
 		
 		// 필터 로직을 수행한 후에 연결된 필터 혹은 서블릿으로 처리중인 요청과 응답객체를 전달한다 (chain)
-		chain.doFilter(httpRequest, resp);
+		chain.doFilter(req, resp);
 		
 		// 응답이 돌아온 이후 응답 상태를 출력하고 로깅
 		out.println("<h6>LoggingFilter 동작 후</h6>");
