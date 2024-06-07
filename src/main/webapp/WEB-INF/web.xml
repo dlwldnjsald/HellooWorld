@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+		xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" 
+		id="WebApp_ID" version="6.0">
+		
   <display-name>HellooWorld</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -10,15 +14,89 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-  <servlet>
-  	<servlet-name>MyFirstServlet</servlet-name>
-  	<servlet-class>himedia.HelloServlet</servlet-class>
-  </servlet>
-  
+  <!-- Context Parameter
+  		: web App에 등록된 모든 Servlet 들이 공유할수있는 파라미터 
+  		: 가정: dbUser, dbPass가 필요하다는 가정 하에-->
+	  <context-param>
+	  	<param-name>appName</param-name>
+	  	<param-value>HellooWorld</param-value>
+	  </context-param>
+	  
+	  <context-param>
+	  	<param-name>dbUser</param-name>
+	  	<param-value>himedia</param-value>
+	  </context-param>
+	  	
+	  <context-param>
+	  	<param-name>dbPass</param-name>
+	  	<param-value>himedia</param-value>
+	  </context-param>
+	  
+  <!--  Servlet 등록 -->
+	  <servlet>
+	  	<servlet-name>MyFirstServlet</servlet-name>
+	  	<servlet-class>himedia.HelloServlet</servlet-class>
+	  	
+	  	<!--  파라미터 전달 : 
+	  			현재 서블릿 내부에서만 접근 가능 -->
+	  	<init-param>
+	  		<param-name>servletName</param-name>
+	  		<param-value>HelloServlet</param-value>
+	  	</init-param>
+	  	
+	  	<init-param>
+	  		<param-name>description</param-name>
+	  		<param-value>나의 첫 서블릿입니다.</param-value>
+	  	</init-param>
+	  	
+	  </servlet>
+	  
   <!--  url패턴 - 클래스 연결 (mapping) -->
-  <servlet-mapping>
-  	<servlet-name>MyFirstServlet</servlet-name>
-  	<url-pattern>/hs</url-pattern>
-  </servlet-mapping>
+	  <servlet-mapping>
+	  	<servlet-name>MyFirstServlet</servlet-name>
+	  	<url-pattern>/hs</url-pattern>
+	  </servlet-mapping>
+  
+  
+  <!--  Error Pages : servlet과 servlet-mapping 뒤에 나와야 한다 -->
+  
+  <!--  HTTP 상태 코드에 의한 에러페이지 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/views/errors/error.404.jsp</location>
+  </error-page>
+  
+  <!-- 특정 예외상황에 의한 에러 페이지 -->
+  <error-page>
+  	<exception-type>java.lang.Throwable</exception-type>
+  	<location>/views/errors/errors.jsp</location>
+  </error-page>
   
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
