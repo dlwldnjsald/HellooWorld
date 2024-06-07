@@ -32,6 +32,37 @@
 	  	<param-value>himedia</param-value>
 	  </context-param>
 	  
+  <!--  Filter 등록  : servlet 등록과 유사하다-->	  
+  	  <filter>
+  	  	<filter-name>EncodingFilter</filter-name>
+  	  	<filter-class>himedia.filter.EncodingFilter</filter-class>
+
+		<!-- Filter 초기화 파라미터 등록 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+  	  </filter>
+  	
+		<!-- Logging Filter -->
+	  	  <filter>
+	  	  	<filter-name>LoggingFilter</filter-name>
+	  	  	<filter-class>himedia.filter.LoggingFilter</filter-class>
+	  	  </filter>
+  	    	  
+  	    	  
+  	  <filter-mapping>
+  	  	<filter-name>EncodingFilter</filter-name>
+  	  	<url-pattern>/*</url-pattern> <!-- 모든요청 -->
+  	  </filter-mapping>
+  
+  
+  		<!-- Logging Filter -->
+	  		<filter-mapping>
+	  			<filter-name>LoggingFilter</filter-name>
+	  			<url-pattern>/*</url-pattern> <!-- 모든요청 -->
+	  		</filter-mapping>
+  
   <!--  Servlet 등록 -->
 	  <servlet>
 	  	<servlet-name>MyFirstServlet</servlet-name>
@@ -51,7 +82,8 @@
 	  	
 	  </servlet>
 	  
-  <!--  url패턴 - 클래스 연결 (mapping) -->
+  <!--  url패턴 - 클래스 연결하는 매핑작업 하기(mapping) 
+  		"MyFirstServlet"이라는 이름의 서블릿 클래스를 "/hs"라는 URL 패턴에 매핑-->
 	  <servlet-mapping>
 	  	<servlet-name>MyFirstServlet</servlet-name>
 	  	<url-pattern>/hs</url-pattern>

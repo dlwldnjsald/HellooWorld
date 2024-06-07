@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+// HelloServlet 클래스는 HttpServlet 클래스를 상속받기 
 public class HelloServlet extends HttpServlet {
 		
 		private static final long serialVersionUID = 7953577680372913094L;
@@ -52,7 +53,7 @@ public class HelloServlet extends HttpServlet {
 			super.service(req, resp);
 		}
 		
-		//doGet
+		//doGet() 메서드를 오버라이드하여 GET 요청을 처리할 로직을 구현
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
@@ -79,17 +80,17 @@ public class HelloServlet extends HttpServlet {
 			
 			PrintWriter out = resp.getWriter();
 			
-			out.println("<h1>App Name:" + appName + "</h1>");
+			out.println("<h1>App Name: " + appName + "</h1>");
 			
-			out.println("<h2>" + servletName + "</h2>");
-			out.println("<p>" + description + "</p>");
+			out.println("<h2>servletName: " + servletName + "</h2>");
+			out.println("<p>description: " + description + "</p>");
 			
 			//out.println("<h1>Hello Servlet</h1>");
 			out.println("<p>안녕하세요," + name + "님</p>");
 			
 		}
 
-		//doPost
+		//doPost 메서드를 오버라이드하여 Post 요청을 처리할 로직을 구현
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			

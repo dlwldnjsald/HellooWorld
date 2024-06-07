@@ -11,11 +11,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 
-public class EncodingFilter implements Filter {
+public class EncodingFilter implements Filter { 
 	
 	//로거 선언
 	private static Logger logger = Logger.getLogger(EncodingFilter.class.getSimpleName());
-	
 	private static String encoding = "UTF-8";
 	
 	
@@ -24,8 +23,17 @@ public class EncodingFilter implements Filter {
 		
 		logger.info("[EncodingFilter] init");
 		Filter.super.init(filterConfig);
+		
+		//init-param으로부터 encoding 파라미터정보를 받아와서 encoding 속성을 변경해주기
+		String encodingParam = filterConfig.getInitParameter("encoding");
+		if (encodingParam != null) {
+			encoding = encodingParam;
+			logger.info("\tinit-param으로부터 받은 인코딩:" + encodingParam);
+		}
+		logger.info("\t인코딩이 " + encoding + "으로 설정되었습니다.");
 	}
 
+	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
@@ -47,6 +55,7 @@ public class EncodingFilter implements Filter {
 		out.println("<h6>EncodingFilter 작동 후</h6>");
 		
 	}
+	
 	
 	@Override
 	public void destroy() {
